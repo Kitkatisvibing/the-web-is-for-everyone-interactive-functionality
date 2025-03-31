@@ -1,0 +1,37 @@
+{% render 'partials/head.liquid' %}
+
+<header>
+  <h1>Radio Veronica</h1>
+  <p>home</p>
+  <p>ontdek</p>
+  <p>radio</p>
+  <button>app studio</button>
+</header>
+
+<article>
+  <p>Sander Hoogendoorn</p>
+  <h2>Goud van oud</h2>
+  <p>Back to black - Amv Winehouse</p>
+
+  <div>
+    <button>Kijk live</button>
+    <button></button>
+    <button>App studio</button>
+  </div>
+
+  <h2>Eerder op radio Veronica</h2>
+</article>
+
+<div>
+  <ul>
+    {% for station in radiostations %}
+      <li>{{ station.name }}</li>
+    {% endfor %}
+  </ul>
+</div>
+
+<footer>
+  <p>placeholder text</p>
+</footer>
+
+{% render 'partials/foot.liquid' %}

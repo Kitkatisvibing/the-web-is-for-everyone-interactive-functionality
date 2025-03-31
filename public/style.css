@@ -1,0 +1,47 @@
+body{
+    --veronicaHeadercolor:#0091FF;
+    --veronicaFootercolor:#011564;
+
+    text-align:center;
+
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+}
+
+header{
+    background-color: var(--veronicaHeadercolor);
+    color: white;
+    text-align: left;
+    grid-area: 1 / 1 / 2 / 6;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+article{
+    grid-area: 2 / 1 / 7 / 3;
+    display: flex;
+    flex-direction: column;
+    div{
+        flex-direction: row;
+    }
+}
+
+div{
+    grid-area: 2 / 3 / 7 / 6;
+}
+
+li{
+    list-style: none;
+}
+
+button{
+    color: white;
+    background-color: #fe0070;
+}
+
+footer{
+    background-color: var(--veronicaFootercolor);
+    color: white;
+    grid-area: 7 / 1 / 8 / 6;
+}
