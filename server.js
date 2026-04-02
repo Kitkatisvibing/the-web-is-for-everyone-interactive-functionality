@@ -26,14 +26,36 @@ app.set('views', './views')
 
 console.log('Let op: Er zijn nog geen routes. Voeg hier dus eerst jouw GET en POST routes toe.')
 
-/*
-// Zie https://expressjs.com/en/5x/api.html#app.get.method over app.get()
-app.get(…, async function (request, response) {
-  
-  // Zie https://expressjs.com/en/5x/api.html#res.render over response.render()
-  response.render(…)
+app.get('/', async function (request, response) {
+
+  response.render('index.liquid')
 })
-*/
+
+app.get('/instrumenten', async function (request, response) {
+
+  const type = request.query.instrument
+
+  const instrumentsResponse = await fetch('https://fdnd-agency.directus.app/items/preludefonds_instruments/?')
+
+  const instrumentsResponseJSON = await instrumentsResponse.json()
+  
+  response.render('instrumenten.liquid', {
+    instrumenten: instrumentsResponseJSON.data,
+  })
+})
+
+app.get('/instrumenten/:key', async function (request, response) {
+
+  const instrumentResponse = await fetch('https://fdnd-agency.directus.app/items/preludefonds_instruments/?filter[key]=' + request.params.key)
+  const instrumentResponseJSON = await instrumentResponse.json()
+
+  response.render('instrumentendetail.liquid', {
+    instrument: instrumentResponseJSON.data[0]
+  })
+})
+
+
+
 
 /*
 // Zie https://expressjs.com/en/5x/api.html#app.post.method over app.post()
